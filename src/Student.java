@@ -2,7 +2,6 @@ public class Student {
   int rating;
   private String name;
 
-  // TODO implement Student class according to the instructions provided in the README.md file
 
   public Student(String name) {
     //TODO initialize name
