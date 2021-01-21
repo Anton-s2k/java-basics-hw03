@@ -1,49 +1,65 @@
+
+
 public class Student {
-  int rating;
-  private String name;
+    private int rating;
+    private String name;
+    public static int studentsCount;
+    public static double totalRating;
+    public static double averageStaticRating;
 
 
-  public Student(String name) {
-    //TODO initialize name
-  }
+    public Student(String name) {
+        this.name = name;
+        studentsCount++;
+    }
 
-  public static double getAvgRating() {
-    // TODO return average rating of all students
-    return 0;
-  }
+    public static double getAvgRating() {
+        if (studentsCount != 0) {
+            averageStaticRating = (totalRating / studentsCount);
+        }
+        return averageStaticRating;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    // TODO set student's name
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public int getRating() {
-    return rating;
-  }
+    public int getRating() {
+        return rating;
+    }
 
-  public void setRating(int rating) {
-    // TODO initialize rating;
-  }
+    public int setRating(int rating) {
+        this.rating = rating;
+        totalRating += this.rating;
+        return rating;
+    }
 
-  public boolean betterStudent(Student student) {
-    // TODO return the result of comparing this.student's rating with the student's rating
-    return false;
-  }
+    public boolean betterStudent(Student student) {
+        if (this.rating > student.rating) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-  public void changeRating(int rating) {
-    // TODO change this student's rating and average rating of all students
-  }
+    public void changeRating(int rating) {
+        totalRating -= this.rating;
+        this.rating = setRating(rating);
+    }
 
-  public static void removeStudent(Student student) {
-    // TODO remove student
-  }
+    public static void removeStudent(Student student) {
+        studentsCount = 0;
+        student.rating = 0;
+        totalRating = 0;
+        averageStaticRating = 0;
+    }
 
-  @Override
-  public String toString() {
-    // TODO return String with name and rating of this student
-    return "";
-  }
+    @Override
+    public String toString() {
+        return name + " " + rating;
+    }
 }
